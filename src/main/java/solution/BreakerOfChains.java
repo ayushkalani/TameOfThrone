@@ -1,13 +1,10 @@
 package solution;
 
-import java.util.Random;
+import java.util.List;
+import dto.MessageDTO;
 
-public class BreakerOfChains {
+public interface BreakerOfChains {
+  List<MessageDTO> generateMessages(List<String> comp);
 
-
-  public void generateMessages() {
-    Random arya = new Random();
-    int kingdomsPart = arya.nextInt();
-    //asdasd
-  }
+  List<String> pickCompetitorKingdoms(int n);
 }

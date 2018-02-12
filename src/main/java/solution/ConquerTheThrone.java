@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -57,7 +56,7 @@ public class ConquerTheThrone {
 
   }
 
-  public static void main(String[] args) throws IOException {
+  public ConquerTheThrone() throws IOException {
     boolean victory = false;
     String[][] input = cleanInput(readInput(3));
     List<String> allies = getAllies(input, Utils.getKingdoms());
@@ -79,5 +78,11 @@ public class ConquerTheThrone {
     } else {
       LOGGER.info("None");
     }
+  }
+
+  public static void main(String[] args) throws IOException {
+    // new ConquerTheThrone();
+    BreakerOfChainsImpl bc = new BreakerOfChainsImpl();
+    bc.pickCompetitorKingdoms(6);
   }
 }

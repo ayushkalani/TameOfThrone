@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Utils {
 
@@ -61,7 +63,35 @@ public class Utils {
       }
     }
     return true;
+  }
 
+  public static String getRandomMessage(List<String> messageList) {
+    return (messageList != null) ? messageList.get(ThreadLocalRandom.current().nextInt(
+        messageList.size())) : null;
+  }
+
+  public static List<String> getMessages() {
+    List<String> randomMessages = new ArrayList<>();
+    randomMessages.add("oaaawaala");
+    randomMessages.add("zmzmzmzaztzozh");
+    randomMessages.add("Go, risk it all");
+    randomMessages.add("Let's swing the sword together");
+    randomMessages.add("Die or play the tame of thrones");
+    randomMessages.add("Ahoy! Fight for me with men and money");
+    randomMessages.add("Drag on Martin!");
+    randomMessages.add("When you play the tame of thrones, you win or you die.");
+    randomMessages.add("What could we say to the Lord of Death? Game on?");
+    randomMessages.add("Turn us away, and we will burn you first");
+    randomMessages.add("Death is so terribly final, while life is full of possibilities.");
+    randomMessages.add("");
+    randomMessages.add("");
+    randomMessages.add("");
+    randomMessages.add("");
+    randomMessages.add("");
+    randomMessages.add("");
+    randomMessages.add("");
+
+    return randomMessages;
   }
 
 
