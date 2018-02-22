@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import dto.MessageDTO;
 
 public class ConquerTheThrone {
 
@@ -57,6 +58,7 @@ public class ConquerTheThrone {
   }
 
   public ConquerTheThrone() throws IOException {
+    LOGGER.info("sad9asud9a8du");
     boolean victory = false;
     String[][] input = cleanInput(readInput(3));
     List<String> allies = getAllies(input, Utils.getKingdoms());
@@ -81,8 +83,13 @@ public class ConquerTheThrone {
   }
 
   public static void main(String[] args) throws IOException {
-    // new ConquerTheThrone();
+     //new ConquerTheThrone();
     BreakerOfChainsImpl bc = new BreakerOfChainsImpl();
-    bc.pickCompetitorKingdoms(6);
+    List<String> c = bc.pickCompetitorKingdoms(6);
+    List<MessageDTO> message = bc.generateMessages(c);
+    List<MessageDTO> ballot = bc.priestBallotPick(message);
+    Map<String, String> allies = bc.determineAlleigance(ballot, c);
+    Map<String, List<String>> winner=bc.determineWinner(allies);
+
   }
 }

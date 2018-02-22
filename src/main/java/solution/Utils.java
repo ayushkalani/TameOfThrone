@@ -4,11 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import dto.MessageDTO;
 
 public class Utils {
 
@@ -22,6 +24,7 @@ public class Utils {
     kingdoms.put("space", "gorilla");
     return kingdoms;
   }
+
 
   public List<String> readInput(int n) throws IOException {
     List<String> inputString = new ArrayList<>();
@@ -53,7 +56,7 @@ public class Utils {
     return allies;
   }
 
-  public boolean parseString(String toParse, String emblem) {
+  public static boolean parseString(String toParse, String emblem) {
     char[] check = emblem.toCharArray();
     for (char toTest : check) {
       if (toParse.indexOf(toTest) > -1) {
@@ -65,10 +68,10 @@ public class Utils {
     return true;
   }
 
-  public static String getRandomMessage(List<String> messageList) {
-    return (messageList != null) ? messageList.get(ThreadLocalRandom.current().nextInt(
-        messageList.size())) : null;
-  }
+//  public static String getRandomMessageText(List<String> messageList) {
+//    return (messageList != null) ? messageList.get(ThreadLocalRandom.current().nextInt(
+//        messageList.size())) : null;
+//  }
 
   public static List<String> getMessages() {
     List<String> randomMessages = new ArrayList<>();
@@ -83,16 +86,21 @@ public class Utils {
     randomMessages.add("What could we say to the Lord of Death? Game on?");
     randomMessages.add("Turn us away, and we will burn you first");
     randomMessages.add("Death is so terribly final, while life is full of possibilities.");
-    randomMessages.add("");
-    randomMessages.add("");
-    randomMessages.add("");
-    randomMessages.add("");
-    randomMessages.add("");
-    randomMessages.add("");
-    randomMessages.add("");
-
     return randomMessages;
   }
 
+  /*
+   * @Param n - number of random messages to be selected //
+   */
+  // (listMessages != null) ? listMessages.get(ThreadLocalRandom.current().nextInt(
+  // listMessages.size())) : null;}
+  public List<MessageDTO> pickRandomMessage(List<MessageDTO> listMessages) {
+    Collections.shuffle(listMessages);
+    return new ArrayList<>(listMessages);
 
+  }
+
+  public static <T> T pickRandomFromList(List<T> list) {
+    return (list != null) ? list.get(ThreadLocalRandom.current().nextInt(list.size())) : null;
+  }
 }
